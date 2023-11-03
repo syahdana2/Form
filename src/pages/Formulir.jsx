@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import { useState } from "react";
 
@@ -27,11 +26,11 @@ function Formulir() {
     `);
   }
 
-  const tombol = useNavigate();
+
   return (
     <div>
       <Header />
-      <section className="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 m-20">
+      <section className="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 mt-4">
         <h1 className="text-xl font-bold text-white capitalize dark:text-white">Formulir Anggota Perpustakaan</h1>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
@@ -78,8 +77,8 @@ function Formulir() {
             </div>
           </div>
 
-          <div className="flex justify-end mt-6">
-            <button onClick={() => tombol('/')} type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Kembali</button>
+          <div className="flex justify-end mt-2">
+            <a href="javascript:history.back()" type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Kembali</a>
             <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Kirim</button>
           </div>
         </form>

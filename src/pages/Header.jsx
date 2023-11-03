@@ -1,30 +1,57 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { FaTimes } from "react-icons/fa";
+import { CiMenuFries } from "react-icons/ci";
+
 
 
 function Header() {
     const navigate = useNavigate();
+
+    const [click, setClick] = useState(false);
+    const handleClick = () => setClick(!click);
+    const content = <>
+        <div className="lg:hidden block absolute top-16 w-full lef right-0 bg-slate-900 transition">
+            <ul className="text-center text-xl p-20">
+                <li className="my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded">
+                    <a href="#home" onClick={() => navigate('/')}>Home</a>
+                </li>
+                <li className="my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded">
+                    <a href="#project" onClick={() => navigate('/#project')}>Project</a>
+                </li>
+            </ul>
+        </div>
+    </>
     return (
         <>
-            <nav className="bg-white border-gray-200 dark:bg-gray-900">
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <a onClick={() => navigate('/')} className="flex items-center">
-                        <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" />
-                        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Form</span>
-                    </a>
-                    <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-                        <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                            <li>
-                                <button onClick={() => navigate('/login')} className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-                                    <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                        Login 🚀
-                                    </span>
-                                </button>
-                            </li>
-                        </ul>
+            <nav className="bg-slate-900 border-gray-900 dark:bg-gray-900">
+                <div className="h-10vh flex justify-between z-50 text-white lg:py-5 px-20 py-4">
+                    <div className="flex items-center flex-1">
+                        <span className="text-3xl font-bold">0$</span>
                     </div>
+                    <div className="lg:flex md:flex lg: flex-1 items center justify-end font-normal hidden">
+                        <div className="flex-10">
+                            <ul className="flex gap-8 mr-16 text-[18px]">
+                                <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">
+                                    <a href="#home" onClick={() => navigate('/')}>Home</a>
+                                </li>
+                                <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">
+                                    <a href="#project" onClick={() => navigate('/#project')}>Project</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        {click && content}
+                    </div>
+                    <button className="block sm:hidden transition" onClick={handleClick}>
+                        {click ? <FaTimes /> : <CiMenuFries />}
+                    </button>
                 </div>
             </nav>
         </>
     );
 }
 export default Header;
+
+
